@@ -1,8 +1,121 @@
-/* Анимация для появления элементов */
+/* Root variables for consistent theming */
+:root {
+  --primary-color: #1e90ff; /* Dodger Blue */
+  --secondary-color: #141414; /* Almost Black */
+  --text-color: #ffffff; /* White */
+  --card-bg-color: #1f1f1f; /* Dark Gray */
+  --button-bg-hover: #0073e6; /* Deeper Blue */
+  --button-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* General styles */
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* App container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Typography */
+h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p, label {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Text input field */
+textarea, input[type="text"] {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px var(--button-shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: var(--button-bg-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px var(--button-shadow);
+}
+
+/* Cards styling */
+.card {
+  background-color: var(--card-bg-color);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-content {
+  margin: 10px 0;
+}
+
+/* Grid layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Animations */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   100% {
     opacity: 1;
@@ -10,20 +123,10 @@
   }
 }
 
-/* Анимация для кнопок */
-@keyframes scaleUp {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.7s ease-out forwards;
-}
-
-.scale-up:hover {
-  animation: scaleUp 0.3s ease-in-out forwards;
+.card-content {
+  word-wrap: break-word; /* Allows words to break onto a new line */
+  word-break: break-word; /* Ensures long unbroken text wraps correctly */
+  overflow-wrap: break-word; /* Alternative for compatibility */
+  line-break: anywhere; /* Ensures compatibility with all browsers */
+  white-space: normal; /* Default, ensures normal line breaking */
 }
